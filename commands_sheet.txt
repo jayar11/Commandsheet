@@ -6,7 +6,7 @@ sudo pvcreate /dev/<new physicaldisk>
 sudo lvmdiskscan -l
 sudo vgextend <vg name> /dev/<new physicaldisk>
 sudo lvextend --extents +100%FREE /dev/mapper/<volumegroup--name-logicalvolume--name>
-sudo resize2fs /dev/mapper/<volumegroup--name-logicalvolume--name> or sudo xfs_growfs for rhel
+sudo resize2fs /dev/mapper/<volumegroup--name-logicalvolume--name> or sudo xfs_growfs /dev/mapper/<vgname-lvname> for rhel
 sudo df -h or sudo df -h /
 
 #note: /dev/mapper/<vg name -lvname> can be obtained by df -h
