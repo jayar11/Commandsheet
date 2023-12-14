@@ -1,0 +1,18 @@
+The Storage parameter in the /etc/systemd/journald.conf file defines whether to store system journals in a volatile manner or persistently across reboot. 
+Set this parameter to persistent, volatile, auto, or none as follows:
+
+[Journal]
+Storage=persistent/volatile/auto/none
+
+persistent: stores journals in the /var/log/journal directory which persists across reboots.
+volatile: stores journals in the volatile /run/log/journal directory.
+This is the default action if the Storage parameter is not set.
+auto: if the /var/log/journal directory exists, then systemd-journald uses persistent storage, otherwise it uses volatile storage.
+
+If the /var/log/journal directory does not exist, the systemd-journald service creates it.
+As the /run file system is temporary and exists only in the runtime memory, data stored in it, including system journals, do not persist across a reboot.
+
+none: do not use any storage. All logs are dropped but log forwarding will still work as expected.
+
+-> journalctl --since "2023-08-01 00:00:00" --until "-1 min" _SYSTEMD_UNIT="sshd.service"
+-> systemctl restart systemd-journald

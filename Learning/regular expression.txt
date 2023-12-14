@@ -1,0 +1,22 @@
+#####using grep and regular expression for text analysis#####
+
+grep "[CcFf]a[RrTt]" <filname>.<extn> (like filename.txt)
+-will match letters starting with Upper/lower case C or F followed by letter second letter a and last leteer ending with Upper/lower case R or T in a text
+eg: car or fat are possible world and will be displayed if exists in file
+
+grep "da[a-z]" filename
+-will match words like day etc as last letter ranges from a-z if exists in file
+
+grep "^He" filename.txt
+-will match lines starting with "He" in file (^ indicates begining)
+-can use with ls as well like ls -l | grep "^d" to list directories
+
+grep "d[^a-i]y" filename
+-will match outside range a-i if carrot option is used in range
+
+grep "got$" filename
+-will match word got at end of line if used with $
+
+grep "st..id" filename
+-will match any one character for each dot in that file
+-eg word is stupid is a possible word and withh match if exists
