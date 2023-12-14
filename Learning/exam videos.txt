@@ -1,8 +1,0 @@
-#######################YouTube Links###########################
-https://www.youtube.com/watch?v=j1bEMJTeYSE&t=209s
-https://www.youtube.com/watch?v=AQa-Pj_ZDxg
-https://www.youtube.com/watch?v=QHUic9ehvVw
-use below youtube link to know about hostname resolution
-https://www.youtube.com/watch?v=6c3xYg3GH2w
-###########################GitHub##############################
-https://github.com/aggressiveHiker/rhcsa9/tree/main/study_notes
