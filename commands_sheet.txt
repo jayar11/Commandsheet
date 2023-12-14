@@ -27,8 +27,8 @@ sudo nmcli device reapply <name of conn>
 
 use >sudo nmcli con mod to make any changes
 
-#note: use nmcli c add ifname (eg:enp1s0) to add a new device name
-#note: enX is name of active conn (eg:enp0s3)
+#note: use nmcli c add ifname (eg:en1s0) to add a new device name
+#note: enX is name of active conn (eg:en0s3)
 ----------------------------------------------------------------------------docker ce with gpg key --------------------------------------------------------------------------
 sudo apt-get update
 sudo apt-get install \ ca-certificates \ curl \ gnupg \ lsb-release
