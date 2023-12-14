@@ -1,0 +1,31 @@
+Command	Intended use
+crontab -l	List the jobs for the current user.
+crontab -r	Remove all jobs for the current user.
+crontab -e	Edit jobs for the current user.
+crontab filename	Remove all jobs, and replace them with jobs that are read from filename. This command uses stdin input when no file is specified.
+
+The fields in the crontab file appear in the following order:
+
+* Minutes
+* Hours
+* Day of month
+* Month
+* Day of week
+* Command
+
+The command executes when the Day of month or Day of week fields use the same value other than the * character.
+
+For example, to run a command on the 11th day of every month, and every Friday at 12:15 (24-hour format), use 
+the following job format:
+
+15 12 11 * Fri command
+
+For example,The following job executes the /usr/local/bin/yearly_backup command at exactly 09:00 on 3 Feb,every year. 
+February is represented as the number 2 in the example, because it is the second month of the year.
+
+0 9 3 2 * /usr/local/bin/yearly_backup
+
+For example,The following job runs the /usr/local/bin/daily_report command every working day (Monday to Friday) 
+two minutes before midnight.
+
+58 23 * * 1-5 /usr/local/bin/daily_report
