@@ -1,0 +1,28 @@
+!note: unlike fdisk changes will take immediate effect.suggested to proceed with caution (p: refers to cmd inside parted)
+change to root or sudo
+p:parted /dev/<disk> (eg:parted /dev/sdb)
+p:unit s/GB print (refer note 1)
+p:print free
+p:mklabl msdos or p:mklabel gpt (use msdos for MBR & gpt for GPT partition type)
+p:mkpart 
+(..fill in required info like primary or extended follow up options, file type xfs for rhel & ext4 for ubuntu)
+(..st start value should be 2048s and end value in MB like 1024 MB , second start value should be former end value 
+& can be found using print free)
+(..alwats set 1 MB greater than 1st partition due to initial start sector)
+!note1(.. use unit s print or unit MB/GB print disc values in s/MB/GB)
+p:print (to see number and flags of created partition)
+p:set <no> lvm on (eg: set 1 or 2 lvm on for preventing lvm flag erros) 
+p:quit
+!note:use mkfs.xfs /dev/<disk>or mkfs.ext4 /dev/<disk> (base on distro) to create file system for further use of created disks
+udevadm settle (for reflecting changes to disks)
+!note:use /dev/<volume_group>/<logical_volume> name for creating file system after mapping physical voume to volume group or device ll be busy. we can use mkfs.<ext> (xfs or ext4) or mkfs -t <ext> (xfs or ext4)
+lsblk -f or lsblk -fs or ls -lha /dev/disk/by-uuid to get uuid 
+-------------------------------------------------------swap volume---------------------------------------------
+(.. for swap valume use mkswap-linux)
+p:parted /dev/vdc mkpart primary linux-swap 1MiB 513MiB
+mkswap /dev/<volume> to enable swap
+---------------------------------------make file system and mount to folder -----------------------------------
+!note:lsblk -o UUID /dev/<volume_group>/<logical_volume> to get UUID and use echo to parse to fstab for persistant mount
+echo "UUID=<vaule> /<foldername> xfs defaults 0 0" >> /etc/fstab
+eg:(echo "UUID=980c...0ab6 /user-folder xfs defaults 0 0" >> /etc/fstab)
+then mount folder mount /<folder> eg:(mount /user-folder)
