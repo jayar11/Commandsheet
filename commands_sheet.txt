@@ -70,3 +70,11 @@ swapon -a
 vi /etc/fstab
 /dev/<volume> 	swap swap default 0 0
 systemctl daemon-reload
+-------------------------------------------------------------------------------------yum---------------------------------------------------------------------------------
+1)sudo yum update (will update all installed packages)
+2)sudo yum check-update /sudo yum list updates ( checks for available updates)
+3)sudo yum list updates <package name> (checks for specific package)
+4)sudo yum --exclude=packagName\* update (to exclude single package)
+5)sudo yum --exclude=packagName1\* --exclude=packagName2\* update (for multiple package exclusion)
+6)sudo yum -y -x 'kernel*' update (ll update excluding kernel)
+or vi /etc/yum.conf and append/modify exclude=kernel*
