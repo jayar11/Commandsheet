@@ -13,7 +13,7 @@ p:mkpart
 p:print (to see number and flags of created partition)
 p:set <no> lvm on (eg: set 1 or 2 lvm on for preventing lvm flag erros) 
 p:quit
-!note:use mkfs.xfs /dev/<disk>or mkfs.ext4 /dev/<disk> (base on distro) to create file system for further use of created disks
+!note:use mkfs.xfs /dev/<disk>or mkfs.ext4 /dev/<disk> (based on distro eg:/dev/sdc1) to create file system for further use of created disks
 udevadm settle (for reflecting changes to disks)
 !note:use /dev/<volume_group>/<logical_volume> name for creating file system after mapping physical voume to volume group or device ll be busy. we can use mkfs.<ext> (xfs or ext4) or mkfs -t <ext> (xfs or ext4)
 lsblk -f or lsblk -fs or ls -lha /dev/disk/by-uuid to get uuid 
