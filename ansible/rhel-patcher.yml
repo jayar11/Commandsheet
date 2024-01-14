@@ -1,5 +1,5 @@
 ---
-#### Playbook to perform Kernel Patching for CenntOS/RHEL Servers ####
+#### Playbook to perform Kernel Patching for CentOS/RHEL Servers ####
 - hosts: #<name of servers in inventory list>
   become: yes
   serial: 2
