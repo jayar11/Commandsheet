@@ -25,9 +25,9 @@
       tags: ['update']
 
     - name: Task 4 - Check if a reboot is required after kernel update on RHEL
-       register: reboot_check_file
        command: needs-restarting -r
        when: ansible_distribution == 'CentOS' or ansible_distribution == 'RHEL'
+       register: reboot_check_file
 
     - name: Task 5 - Reboot RHEL if kernel updated
       reboot:
