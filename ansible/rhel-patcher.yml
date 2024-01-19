@@ -37,7 +37,7 @@
         pre_reboot_delay: 0
         post_reboot_delay: 30
         test_command: uptime
-      when: reboot_check.rc == 0
+      when: reboot_check_file.rc == 0
       register: reboot_started
       ignore_errors: true
 
