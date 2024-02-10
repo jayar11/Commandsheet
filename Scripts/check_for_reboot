@@ -1,0 +1,13 @@
+#!/bin/bash
+# only works if yum install yum-utils was performed
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+RESET='\033[0m'
+needs-restarting -r >> /dev/null
+check_validate=$(echo $?)
+if [[ $check_validate -eq 0 ]]
+then
+echo -e "${GREEN} REBOOT NOT REQUIRED ${RESET}"
+else
+echo -e "${RED} REBOOT REQUIRED ${RESET}";
+fi
