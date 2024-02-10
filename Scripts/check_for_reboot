@@ -9,5 +9,5 @@ if [[ $check_validate -eq 0 ]]
 then
 echo -e "${GREEN} REBOOT NOT REQUIRED ${RESET}"
 else
-echo -e "${RED} REBOOT REQUIRED ${RESET}";
+echo -e "${RED} REBOOT REQUIRED ${RESET}"
 fi
