@@ -2,7 +2,9 @@ Command	Intended use
 crontab -l	List the jobs for the current user.
 crontab -r	Remove all jobs for the current user.
 crontab -e	Edit jobs for the current user.
-crontab filename	Remove all jobs, and replace them with jobs that are read from filename. This command uses stdin input when no file is specified.
+crontab -eu <usrname> Edit jobs for specific user
+
+sudo systemctl restart crond.service (t restart cron services after editing user jobs)
 
 The fields in the crontab file appear in the following order:
 
