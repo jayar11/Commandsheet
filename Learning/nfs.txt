@@ -1,0 +1,36 @@
+----------------------------------------------nfs---------------------------------------
+1)note: rpcbing & nfs-utils package installation is req
+>sudo yum/dnf update
+>sudo yum/dnf install rpcbind nfs-utils -y
+2)note:enable both rpcbind & nfs-utils
+>sudo systemctl enable nfs-server
+>sudo systemctl enable rpcbind
+3)add nfs-service to firwall and reload to enable changes
+>sudo firewallcmd --add-service={nfs,rpc-bind,mountd} --permanent
+>sudo firewall-cmd --reload
+4)create share dir & set req permissions as req
+>mkdir -p /path/to/server-folder
+>chmod xyyy -R /path/to/server-folder
+5)export share directory
+>sudo vim /etc/exports
+~/path/to/folder client-ip(or)client-hostname (rw,sync/no_root_squash) <enter value in vim after~)
+/path/to/folder – shared directory
+client-ip(or)client-hostname – Client machine details
+rw – Writable permission to shared folder
+sync – Synchronize shared directory
+no_root_squash – Enable root privilege
+no_all_squash - Enable user’s authority
+>sudo exportfs -rv/-rav
+note:*****from here is the part on client end config*****
+6)view nfs share using showmount cmd (works only when nfs-utils & rpcbind is installed)
+>showmount -e localhost
+>showmount -e server-ip/hostname
+7)create local dir wh req permissions to map to nfs-server folder
+>mkdir -p /path/to/client-folder
+>mount -t nfs server-ip(or)hostname:/path/to/server-folder /path/to/client-folder
+8)create persistent mount to fstab file (add after ~ to fstab file)
+>sudo nano /etc/fstab
+>~server-ip(or)hostname:/path/to/server-folder /path/to/client-folder  nfs defaults 0 0
+9) check mount path using df
+>df -h 
+output should show server-ip/hostname:/path/to/server-folder <size> <used> <avail> /path/to/client-folder
