@@ -51,3 +51,5 @@ note:*****from here is the part on client end config*****
 
 >df -h 
 output should show server-ip/hostname:/path/to/server-folder <size> <used> <avail> /path/to/client-folder
+
+----------------------------------------------end---------------------------------------
