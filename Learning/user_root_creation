@@ -1,0 +1,14 @@
+# user-creation with root & no passwd previleges #
+
+useradd <username> # to create user
+passwd  <username> # to change or set password
+
+# use vi or nano and create this file in /etc/sudoers.d/<username>
+
+cat << EOF >/etc/sudoers.d/<username>
+<username> ALL = (root) NOPASSWD:ALL
+EOF
+
+# set permissions to recommended
+
+chmod 0440 /etc/sudoers.d/<username>
